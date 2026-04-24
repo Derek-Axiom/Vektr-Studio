@@ -1,0 +1,263 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  /* ── FOCUS MODE (dark studio) - DEFAULT ───────────────────────── */
+  :root {
+    --color-bg:        #030406;
+    --color-bg-panel:  #0a0c10;
+    --color-bg-card:   #11141a;
+    --color-border:    rgba(255,255,255,0.06);
+    --color-border-md: rgba(255,255,255,0.12);
+    --color-text:      #ffffff;
+    --color-text-muted: rgba(255,255,255,0.45);
+    --color-text-body:  rgba(255,255,255,0.6);
+    --color-surface:   rgba(255,255,255,0.04);
+    --color-surface-hover: rgba(255,255,255,0.08);
+  }
+
+  /* ── FLOW MODE (light creative) ───────────────────────────────── */
+  .flow-mode {
+    --color-bg:        #f0f2f5;
+    --color-bg-panel:  #ffffff;
+    --color-bg-card:   #f8f9fa;
+    --color-border:    rgba(0,0,0,0.08);
+    --color-border-md: rgba(0,0,0,0.16);
+    --color-text:      #111827;
+    --color-text-muted: #374151; /* Dark Gray 700 - Highly Legible */
+    --color-text-body:  #1f2937; /* Dark Gray 800 - Deep & Readable */
+    --color-surface:   rgba(0,0,0,0.04);
+    --color-surface-hover: rgba(0,0,0,0.08);
+  }
+
+  body {
+    @apply font-sans antialiased overflow-x-hidden;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  /* 
+   * VEKTR UI SYSTEM (STRICT)
+   */
+
+  .ui-panel {
+    background: var(--color-bg-panel);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    color: var(--color-text);
+    transition: background 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+  }
+  
+  .ui-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    transition: all 0.2s ease;
+    color: var(--color-text);
+  }
+  .ui-card:hover {
+    border-color: var(--color-border-md);
+    background: var(--color-bg-panel);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  }
+  
+  .ui-input {
+    width: 100%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+    color: var(--color-text);
+    transition: border-color 0.2s, background 0.3s, color 0.3s;
+  }
+  .ui-input:focus {
+    border-color: var(--color-border-md);
+  }
+  .ui-input::placeholder {
+    color: var(--color-text-muted);
+  }
+  
+  .ui-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-md);
+    border-radius: 12px;
+    height: 48px;
+    padding: 0 24px;
+    color: var(--color-text);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .ui-button:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--color-text-muted);
+    color: var(--color-text);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+  .ui-button:active {
+    transform: scale(0.98);
+  }
+  
+  .ui-button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 48px;
+    padding: 0 24px;
+    color: var(--color-text);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+  }
+  .ui-button-secondary:hover {
+    background: var(--color-surface);
+    border-color: var(--color-border-md);
+    color: var(--color-text);
+  }
+
+  /* TYPOGRAPHY HIERARCHY */
+  .text-app-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-text-muted);
+  }
+
+  .text-page-title {
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--color-text);
+  }
+  
+  .text-section-title {
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+  }
+  
+  .text-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text);
+  }
+  
+  .text-body {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--color-text-body);
+  }
+  
+  .text-micro {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-text-muted);
+  }
+
+  /* Page Header Layout Primitive */
+  .page-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+  .page-header .text-app-label {
+    margin-bottom: 8px;
+  }
+  .page-header .text-page-title {
+    margin-bottom: 12px;
+  }
+}
+
+/* Operational Scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* FLOW MODE RAW TAILWIND INVERSIONS & HYPER-CONTRAST */
+.flow-mode .text-white, .flow-mode .text-white\/80 { color: #000000 !important; }
+.flow-mode .text-white\/60, .flow-mode .text-white\/50, .flow-mode .text-white\/70 { color: #111827 !important; }
+.flow-mode .text-white\/40, .flow-mode .text-white\/30, .flow-mode .text-white\/20, .flow-mode .text-white\/10, .flow-mode .text-white\/5 { color: #374151 !important; }
+.flow-mode .hover\:text-white:hover { color: #000000 !important; }
+.flow-mode .group:hover .group-hover\:text-white { color: #000000 !important; }
+
+/* Eliminate "white gray" fading by boosting generic opacities */
+.flow-mode .opacity-10, .flow-mode .opacity-20, .flow-mode .opacity-30 { opacity: 0.6 !important; }
+.flow-mode .opacity-40, .flow-mode .opacity-50, .flow-mode .opacity-60 { opacity: 0.8 !important; }
+
+.flow-mode .bg-white\/5, .flow-mode .bg-white\/\[0\.02\], .flow-mode .bg-white\/\[0\.03\], .flow-mode .bg-white\/\[0\.04\], .flow-mode .bg-white\/\[0\.05\], .flow-mode .bg-white\/\[0\.08\], .flow-mode .bg-white\/\[0\.1\] { background-color: var(--color-surface) !important; }
+.flow-mode .hover\:bg-white\/\[0\.02\]:hover, .flow-mode .hover\:bg-white\/\[0\.04\]:hover, .flow-mode .hover\:bg-white\/\[0\.08\]:hover, .flow-mode .hover\:bg-white\/\[0\.1\]:hover { background-color: var(--color-surface-hover) !important; }
+.flow-mode .border-white\/5, .flow-mode .border-white\/10, .flow-mode .border-white\/\[0\.06\], .flow-mode .border-white\/\[0\.1\], .flow-mode .border-white\/20 { border-color: var(--color-border-md) !important; }
+
+/* HARDCODED BLACK INVERSIONS FOR FLOW MODE (Fixing UI Black Boxes) */
+.flow-mode .bg-black,
+.flow-mode .bg-\[\#07080c\],
+.flow-mode .bg-\[\#0a0a0a\],
+.flow-mode .bg-\[\#0c0c0e\],
+.flow-mode .bg-\[\#0d0f16\] { background-color: var(--color-bg-panel) !important; }
+.flow-mode .bg-black\/20,
+.flow-mode .bg-black\/40,
+.flow-mode .bg-black\/60,
+.flow-mode .bg-black\/80,
+.flow-mode .bg-black\/90,
+.flow-mode .bg-black\/\[0\.4\] { background-color: var(--color-surface) !important; }
+
+.flow-mode .shadow-inner { box-shadow: none !important; }
+

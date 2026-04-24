@@ -1,0 +1,2 @@
+src\lib\hooks\useAtmosphere.ts:15 -> *   - All console.log identity branding
+src\lib\VektrLabContext.ts:97 -> // For the sake of zero-latency UX in this module context, we map to a mock heuristic
